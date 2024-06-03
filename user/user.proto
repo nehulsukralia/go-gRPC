@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "github.com/nehulsukralia/go-gRPC/user_gRPC";
+
+service UserService {
+    rpc GetUsers (GetUsersParam) returns (UserList) {}
+    rpc GetUser (GetUserParam) returns (User) {}
+}
+
+message User {
+    int32 id = 1;
+    string firstName = 2;
+    string city = 3;
+    string phone = 4;
+    float height = 5;
+    bool married = 6;
+}
+
+message GetUsersParam {
+    repeated int32 userIdList = 1;
+}
+
+message GetUserParam {
+    int32 userId = 1;
+}
+
+message UserList {
+    repeated User users = 1;
+}
+
+ 
